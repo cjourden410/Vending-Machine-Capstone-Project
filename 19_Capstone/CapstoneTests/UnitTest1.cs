@@ -8,13 +8,13 @@ namespace CapstoneTests
         [TestMethod]
         public void TestMethod1()
         {
-            //want to look at money transaction(s)
-            /////amount inserted
-            /////change given is correct and least amount of coins possible
+            
+            //amount inserted
+            //change given is correct and least amount of coins possible
 
             //unit test for production of sales report and/or total sales
 
-            //correct message give
+            //correct message give (SOLD OUT) (NOT ENOUGH MONEY) (INVALID ITEM) (ITEM MESSAGE)
         }
     }
 }

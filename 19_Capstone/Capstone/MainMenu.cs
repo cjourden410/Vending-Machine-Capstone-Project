@@ -13,10 +13,12 @@ namespace Capstone
             //Vending Machine Design will be here, along with Main Menu? Or separate, then the menu?
 
             VendingMachine vm = new VendingMachine();
+            bool Optionpicked = false;
 
             while(true)
             {
-                Console.Write(@"
+                
+                    Console.Write(@"
                 Welcome, Hungry One. Please select an option.
 
                 (1) Display Vending Machine Items
@@ -24,6 +26,8 @@ namespace Capstone
                 (3) Exit
                 
                 Please choose an option: ");
+                
+                
                 // Main Menu
                 //Console.WriteLine("Welcome, Hungry One. Please select an option. \r\n");
                 //Console.WriteLine("(1) Display Vending Machine Items");
@@ -33,18 +37,22 @@ namespace Capstone
                 // There is supposed to be 'hidden' per #10 of the instructions. This would write the Sales Report, which is detailed in FileLog.cs.
 
                 string input = Console.ReadLine().Trim();
-                int userOption = int.Parse(input);
+                Console.Clear();
 
-                if (userOption == 1)
+                if (input == "1")
                 {
                     // Console.Clear();  will the screen change/clear automatically?
                     //Display Vending Machine Items
                     //VendingMachine display = new VendingMachine(); // Chris Comment - declaired up top so we can remove here
+                    Console.Clear();
                     Console.WriteLine("Display vending machine items");
                     vm.DisplayItems();
+                    Console.WriteLine("Press enter to continue");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
 
-                else if (userOption == 2)
+                else if (input == "2")
                 {
                     ////Purchasing Process Menu
                     //Console.WriteLine("(1) Feed Money");
@@ -61,22 +69,20 @@ namespace Capstone
                     pm.Run();
                 }
 
-                else if (userOption == 3)
+                else if (input == "3")
                 {
                     Console.WriteLine("Goodbye!");
                     break;
                 }
 
-                else if (userOption == 4)
+                else if (input == "4")
                 {
-                    //call on SalesReport function in FileLog here
-                    FileLog salesreport = new FileLog();
-
+                    vm.PrintSalesReport();
                 }
 
                 else  // should this be a 'catch'? Chris Comment - thinking we'll be fine with an else
                 {
-                    Console.WriteLine($"{userOption} is invalid. Please enter 1, 2, or 3. Thank you!");
+                    Console.WriteLine($"{input} is invalid. Please enter 1, 2, or 3. Thank you!");
                 }
             }
 

@@ -8,6 +8,8 @@ namespace Capstone
         private FileLog fileLog = new FileLog();
         public decimal MoneyProvided { get; private set; }
 
+        public decimal GrossPerItem { get; private set; } // Money Added to sales report total
+
         public decimal TotalSales { get; private set; }
         public Money(FileLog fileLog)
         {
@@ -44,7 +46,7 @@ namespace Capstone
 
         public bool RemoveMoney(decimal amountToRemove)
         {
-            if(this.MoneyProvided <= 0)
+            if(this.MoneyProvided < amountToRemove)
             {
                 return false;
             }
@@ -54,11 +56,7 @@ namespace Capstone
 
         public bool TrackSales(decimal salesAdded)
         {
-            if (this.MoneyProvided <= 0)
-            {
-                return false;
-            }
-            this.MoneyProvided += salesAdded;
+            this.GrossPerItem += salesAdded;
             return true;
         }
         public string GiveChange()
@@ -115,15 +113,36 @@ namespace Capstone
 
             if(quarters > 0)
             {
-                quarterString = $"{quarters} quarters";
+                if (quarters > 1)
+                {
+                    quarterString = $"{quarters} quarters";
+                }
+                else
+                {
+                    quarterString = $"{quarters} quarter";
+                }
             }
             if (dimes > 0)
             {
-                dimeString = $"{dimes} dimes";
+                if (dimes > 1)
+                {
+                    dimeString = $"{dimes} dimes";
+                }
+                else
+                {
+                    dimeString = $"{dimes} dime";
+                }
             }
             if (nickels > 0)
             {
-                nickelString = $"{nickels} nickels";
+                if (nickels > 1)
+                {
+                    nickelString = $"{nickels} nickels";
+                }
+                else
+                {
+                    nickelString = $"{nickels} nickel";
+                }
             }
 
             string result = $"Your change is ";

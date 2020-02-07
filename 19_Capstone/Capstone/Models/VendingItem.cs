@@ -36,7 +36,7 @@
         }
         public bool AddItemToSalesReport()
         {
-            if (this.AddedItems < 5)
+            if (this.ItemsRemaining < 5)
             {
                 this.AddedItems++;
                 return true;
