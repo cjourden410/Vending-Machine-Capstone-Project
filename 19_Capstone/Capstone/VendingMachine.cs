@@ -70,7 +70,8 @@ namespace Capstone
         public bool GetItem(string itemNumber)
         {
             // If the item exists and there is stock left and we have the money to buy
-            if (this.ItemExists(itemNumber) && this.VendingMachineItems[itemNumber].ItemsRemaining > 0 && this.money.MoneyProvided >= this.VendingMachineItems[itemNumber].Price)
+            // UPDATED to call remove item method to update the items remaining
+            if (this.ItemExists(itemNumber) && this.VendingMachineItems[itemNumber].ItemsRemaining > 0 && this.money.MoneyProvided >= this.VendingMachineItems[itemNumber].Price && this.VendingMachineItems[itemNumber].RemoveItem())
             {
                 // Log the item selected
                 string message = $"{this.VendingMachineItems[itemNumber].ProductName} {itemNumber}";

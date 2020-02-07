@@ -12,18 +12,19 @@ namespace Capstone
 
         public List<VendingItem> VendingItemList { get; set; }
 
-        
-        
+
+
         public Dictionary<string, VendingItem> GetVendingItems()
         {
             Dictionary<string, VendingItem> VendingItemList = new Dictionary<string, VendingItem>();
-            
+
+
             //List<VendingItem> VendingItemList = new List<VendingItem>();
-            if(File.Exists("vendingmachine.csv"))
+            if (File.Exists(@"C:\Users\Student\git\c-module-1-capstone-team-8\19_Capstone\vendingmachine.csv"))
             {
                 try
                 {
-                    using (StreamReader sr = new StreamReader("vendingmachine.csv"))
+                    using (StreamReader sr = new StreamReader(@"C:\Users\Student\git\c-module-1-capstone-team-8\19_Capstone\vendingmachine.csv"))
                     {
                         while (!sr.EndOfStream)
                         {
@@ -31,12 +32,12 @@ namespace Capstone
 
                             string[] productDetails = line.Split("|");
 
-                            string slotLocation = productDetails[1];
-                            string productName = productDetails[2];
-                            string price = productDetails[3];
-                            string type = productDetails[4];
+                            string slotLocation = productDetails[0];
+                            string productName = productDetails[1];
+                            string price = productDetails[2];
+                            string type = productDetails[3];
 
-                            if (!decimal.TryParse(productDetails[3], out decimal productPrice))
+                            if (!decimal.TryParse(productDetails[2], out decimal productPrice))
                             {
                                 productPrice = 0M;
                             }
@@ -45,12 +46,12 @@ namespace Capstone
 
                             VendingItem item;
 
-                            switch (productDetails[4])
+                            switch (productDetails[3])
                             {
                                 case "Chip":
                                     item = new Chip(productName, productPrice, itemsRemaining);
                                     break;
-                                case "Beverage":
+                                case "Drink":
                                     item = new Beverage(productName, productPrice, itemsRemaining);
                                     break;
                                 case "Gum":
@@ -62,16 +63,16 @@ namespace Capstone
                                 default: throw new ArgumentOutOfRangeException();
                             }
 
-                            VendingItemList.Add(productDetails[1], item);
+                            VendingItemList.Add(productDetails[0], item);
                         }
                     }
 
-                }
-                catch
-                {
-                    Console.WriteLine("Ran into an error when trying to open the reference file.");
-                }
             }
+                catch
+            {
+                
+            }
+        }
             else
             {
                 Console.WriteLine("The input file is missing. Is this vending machine even real? Are we even real?");
