@@ -8,6 +8,7 @@ namespace Capstone
         private FileLog fileLog = new FileLog();
         public decimal MoneyProvided { get; private set; }
 
+        public decimal TotalSales { get; private set; }
         public Money(FileLog fileLog)
         {
             this.MoneyProvided = 0;
@@ -51,6 +52,15 @@ namespace Capstone
             return true;
         }
 
+        public bool TrackSales(decimal salesAdded)
+        {
+            if (this.MoneyProvided <= 0)
+            {
+                return false;
+            }
+            this.MoneyProvided += salesAdded;
+            return true;
+        }
         public string GiveChange()
         {
             string result = string.Empty;

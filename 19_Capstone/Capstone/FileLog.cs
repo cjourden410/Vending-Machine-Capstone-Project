@@ -33,5 +33,45 @@ namespace Capstone
                 return;
             }
         }
+
+        public void SalesReport(string message2, string totalItems, string numberOfItemsSold)
+         
+        {
+            //string directory = Environment.CurrentDirectory;
+            //string filename = "SalesReport.txt";
+            //string fullPath = Path.Combine(directory, filename);
+
+            //Dictionary<string, VendingItem> totalItemsSold = new Dictionary<string, VendingItem>();
+
+            //totalItemsSold.Add(message2, priceItemSold);
+
+            
+            //int numberSold = int.Parse(numberOfItemsSold);
+
+
+            //decimal totalSales = 0;
+
+ 
+
+         
+
+            string salesLine = $"{message2}|{totalItems}";
+
+            // we want the vending item list, but only the item parameter, which has productName, productPrice, itemsRemaining.
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("SalesReport.txt", false))
+                {
+                    sw.WriteLine(salesLine);
+                }
+                Console.WriteLine($"{numberOfItemsSold:C)}");
+            }
+            catch
+            {
+                Console.WriteLine("Ran into an error when trying to make the sales report.");
+                return;
+            }
+
+        }
     }
 }

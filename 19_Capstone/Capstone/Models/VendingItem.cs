@@ -8,6 +8,8 @@
 
         public decimal Price { get; set; }
 
+        public int AddedItems { get; set; }
+
         public int ItemsRemaining { get; set; }
         public string MessageWhenDelivered { get; set; }
         public string MessageWhenSoldOut { get; set; }
@@ -28,6 +30,15 @@
             if(this.ItemsRemaining > 0)
             {
                 this.ItemsRemaining--;
+                return true;
+            }
+            return false;
+        }
+        public bool AddItemToSalesReport()
+        {
+            if (this.AddedItems < 5)
+            {
+                this.AddedItems++;
                 return true;
             }
             return false;

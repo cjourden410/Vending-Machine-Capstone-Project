@@ -67,12 +67,12 @@ namespace Capstone
                         }
                     }
 
-            }
+                }
                 catch
-            {
-                
+                {
+
+                }
             }
-        }
             else
             {
                 Console.WriteLine("The input file is missing. Is this vending machine even real? Are we even real?");

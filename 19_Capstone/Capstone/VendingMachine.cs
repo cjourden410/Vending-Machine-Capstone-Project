@@ -105,6 +105,39 @@ namespace Capstone
 
         }
 
+        public bool TrackItemtoSales(string itemNumber)
+        {
+            // If the item exists and there is stock left and we have the money to buy
+            // UPDATED to call remove item method to update the items remaining
+            if (this.ItemExists(itemNumber) && this.VendingMachineItems[itemNumber].ItemsRemaining > 0 && this.money.MoneyProvided >= this.VendingMachineItems[itemNumber].Price && this.VendingMachineItems[itemNumber].AddItemToSalesReport())
+            {
+                // Log the item selected
+                string message2 = $"{this.VendingMachineItems[itemNumber].ProductName}";
+
+                string totalItems = $"{this.money.TrackSales(this.VendingMachineItems[itemNumber].Price)}";
+
+                string numberOfItemsSold = $"{this.VendingMachineItems[itemNumber].AddItemToSalesReport()}";
+
+                
+                // Log message and price of item sold
+                this.fileLog.SalesReport(message2, totalItems, numberOfItemsSold);
+
+                return true;
+            }
+            else
+            {
+                return false;
+
+                // this is where customer is informed if product code aka "itemNumber" does not exist.
+                //Console.WriteLine is considered 'unreachable' here. Not sure how to fix
+                //this issue at the moment.
+
+                //also user has to be returned to the Purchase Menu if the itemNumber does not exist.
+
+
+            }
+
+        }
     }
 }
 

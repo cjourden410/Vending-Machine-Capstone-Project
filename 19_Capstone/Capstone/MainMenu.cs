@@ -67,6 +67,13 @@ namespace Capstone
                     break;
                 }
 
+                else if (userOption == 4)
+                {
+                    //call on SalesReport function in FileLog here
+                    FileLog salesreport = new FileLog();
+
+                }
+
                 else  // should this be a 'catch'? Chris Comment - thinking we'll be fine with an else
                 {
                     Console.WriteLine($"{userOption} is invalid. Please enter 1, 2, or 3. Thank you!");
