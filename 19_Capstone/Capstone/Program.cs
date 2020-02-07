@@ -6,9 +6,9 @@ namespace Capstone
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //TODO
 
-            
+
         }
     }
 }

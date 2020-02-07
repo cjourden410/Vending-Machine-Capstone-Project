@@ -54,6 +54,8 @@ namespace Capstone
                 {
                     // Else return that the item is sold out
                     Console.WriteLine($"{kvp.Key} {kvp.Value.ProductName} is sold out!");
+
+                    // return user to the purchase menu
                 }
             }
             
@@ -90,6 +92,14 @@ namespace Capstone
             else
             {
                 return false;
+
+                // this is where customer is informed if product code aka "itemNumber" does not exist.
+                //Console.WriteLine is considered 'unreachable' here. Not sure how to fix
+                //this issue at the moment.
+
+                //also user has to be returned to the Purchase Menu if the itemNumber does not exist.
+
+
             }
 
         }
