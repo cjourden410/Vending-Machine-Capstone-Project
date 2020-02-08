@@ -6,14 +6,9 @@ namespace Capstone
 {
     public class MainMenu
     {
-        public void Run() //originally wrote in program...may have to remove this
-        // Chris Comment - Let's leave this here and just have a basic call to this in the program to keep it as clean as possible. 
-        // Referencing Shapes example and renamed this to run
+        public void Run() 
         {
-            //Vending Machine Design will be here, along with Main Menu? Or separate, then the menu?
-
             VendingMachine vm = new VendingMachine();
-            bool Optionpicked = false;
 
             while(true)
             {
@@ -27,26 +22,18 @@ namespace Capstone
                 
                 Please choose an option: ");
                 
-                
-                // Main Menu
-                //Console.WriteLine("Welcome, Hungry One. Please select an option. \r\n");
-                //Console.WriteLine("(1) Display Vending Machine Items");
-                //Console.WriteLine("(2) Purchase");
-                //Console.WriteLine("(3) Exit");
-
-                // There is supposed to be 'hidden' per #10 of the instructions. This would write the Sales Report, which is detailed in FileLog.cs.
 
                 string input = Console.ReadLine().Trim();
                 Console.Clear();
 
                 if (input == "1")
                 {
-                    // Console.Clear();  will the screen change/clear automatically?
-                    //Display Vending Machine Items
-                    //VendingMachine display = new VendingMachine(); // Chris Comment - declaired up top so we can remove here
+                   
                     Console.Clear();
                     Console.WriteLine("Display vending machine items");
+                    Console.WriteLine();
                     vm.DisplayItems();
+                    Console.WriteLine();
                     Console.WriteLine("Press enter to continue");
                     Console.ReadLine();
                     Console.Clear();
@@ -54,15 +41,6 @@ namespace Capstone
 
                 else if (input == "2")
                 {
-                    ////Purchasing Process Menu
-                    //Console.WriteLine("(1) Feed Money");
-                    //Console.WriteLine("(2) Select Product");
-                    //Console.WriteLine("(3) Finish Transaction \r\n");
-
-                    //// The current money provided should start at $0.00 
-                    //Money customerFunds = new Money(amount); //parameter, need assistance
-                    //Console.WriteLine($"Current Money Provided: {customerFunds.MoneyProvided:C}");
-
                     // Simplifying to call a new purchase menu using this info so it sends the user to that menu from here
                     Console.Clear();
                     PurchaseMenu pm = new PurchaseMenu(vm);
@@ -80,7 +58,7 @@ namespace Capstone
                     vm.PrintSalesReport();
                 }
 
-                else  // should this be a 'catch'? Chris Comment - thinking we'll be fine with an else
+                else
                 {
                     Console.WriteLine($"{input} is invalid. Please enter 1, 2, or 3. Thank you!");
                 }

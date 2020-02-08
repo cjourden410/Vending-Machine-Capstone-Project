@@ -4,13 +4,11 @@ namespace Capstone
 {
     public class Money
     {
-        //private Logger log;
         private FileLog fileLog = new FileLog();
         public decimal MoneyProvided { get; private set; }
 
         public decimal GrossPerItem { get; private set; } // Money Added to sales report total
 
-        public decimal TotalSales { get; private set; }
         public Money(FileLog fileLog)
         {
             this.MoneyProvided = 0;

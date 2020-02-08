@@ -49,7 +49,7 @@ namespace Capstone
                     // Number Available
                     string itemRemaining = kvp.Value.ItemsRemaining.ToString();
 
-                    Console.WriteLine($"{itemLocation,-11} {itemName,-18} {itemPrice,21} {itemRemaining,10}");
+                    Console.WriteLine($"   {itemLocation,-8} {itemName, -18} {itemPrice,21} {itemRemaining,10}");
                 }
                 else
                 {
@@ -68,44 +68,7 @@ namespace Capstone
             return this.VendingMachineItems.ContainsKey(itemNumber);
         }
 
-        //public bool GetItem(string itemNumber) // THIS ONE WORKS
-        //{
-        //    // If the item exists and there is stock left and we have the money to buy
-        //    // UPDATED to call remove item method to update the items remaining
-        //    if (this.ItemExists(itemNumber) && this.VendingMachineItems[itemNumber].ItemsRemaining > 0 && this.money.MoneyProvided >= this.VendingMachineItems[itemNumber].Price && this.VendingMachineItems[itemNumber].RemoveItem())
-        //    {
-        //        // Log the item selected
-        //        string message = $"{this.VendingMachineItems[itemNumber].ProductName} {itemNumber}";
-
-        //        // Log current amount of money in the machine
-        //        decimal before = this.money.MoneyProvided;
-
-        //        // Remove the money in the machine
-        //        this.money.RemoveMoney(this.VendingMachineItems[itemNumber].Price);
-
-        //        // Log the money left in the machine
-        //        decimal after = this.money.MoneyProvided;
-
-        //        // Log message, before, after
-        //        this.fileLog.Log(message, before, after);
-
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-
-        //        // this is where customer is informed if product code aka "itemNumber" does not exist.
-        //        //Console.WriteLine is considered 'unreachable' here. Not sure how to fix
-        //        //this issue at the moment.
-
-        //        //also user has to be returned to the Purchase Menu if the itemNumber does not exist.
-
-
-        //    }
-
-        //}
-
+        
         public bool GetItem(string itemNumber)
         {
             // If the item exists and there is stock left and we have the money to buy
@@ -140,23 +103,11 @@ namespace Capstone
                 // Log the money left in the machine
                 string priceOfItemsSold = this.money.GrossPerItem.ToString("C");
 
-
-                // Log message and price of item sold
-                this.fileLog.SalesReport(message2, priceOfItemsSold, numberOfItemsSold);
-
                 return true;
             }
             else
             {
                 return false;
-
-                // this is where customer is informed if product code aka "itemNumber" does not exist.
-                //Console.WriteLine is considered 'unreachable' here. Not sure how to fix
-                //this issue at the moment.
-
-                //also user has to be returned to the Purchase Menu if the itemNumber does not exist.
-
-
             }
 
         }
@@ -179,45 +130,6 @@ namespace Capstone
                 sw.WriteLine($"Total Sales: {totalSales:C}");
             }
         }
-
-        //public bool TrackItemtoSales(string itemNumber)
-        //{
-        //    // If the item exists and there is stock left and we have the money to buy
-        //    // UPDATED to call remove item method to update the items remaining
-        //    if (this.ItemExists(itemNumber) && this.VendingMachineItems[itemNumber].ItemsRemaining > 0 && this.money.MoneyProvided >= this.VendingMachineItems[itemNumber].Price && this.VendingMachineItems[itemNumber].AddItemToSalesReport())
-        //    {
-        //        // Log the item selected
-        //        string message2 = $"{this.VendingMachineItems[itemNumber].ProductName}"; // Product Name
-
-        //        //string priceOfItemsSold = $"{this.money.TrackSales(this.VendingMachineItems[itemNumber].Price)}"; // Sum of items sold
-
-        //        string numberOfItemsSold = $"{this.VendingMachineItems[itemNumber].AddedItems}"; // Number of items per product
-
-        //        // Remove the money in the machine
-        //        this.money.TrackSales(this.VendingMachineItems[itemNumber].Price);
-
-        //        // Log the money left in the machine
-        //        string priceOfItemsSold = this.money.GrossPerItem.ToString("C");
-
-
-        //        // Log message and price of item sold
-        //        this.fileLog.SalesReport(message2, priceOfItemsSold, numberOfItemsSold);
-
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-
-        //        // this is where customer is informed if product code aka "itemNumber" does not exist.
-        //        //Console.WriteLine is considered 'unreachable' here. Not sure how to fix
-        //        //this issue at the moment.
-
-        //        //also user has to be returned to the Purchase Menu if the itemNumber does not exist.
-
-
-        //    }
-
     }
 }
 

@@ -18,8 +18,6 @@ namespace Capstone
         {
             Dictionary<string, VendingItem> VendingItemList = new Dictionary<string, VendingItem>();
 
-
-            //List<VendingItem> VendingItemList = new List<VendingItem>();
             if (File.Exists(@"C:\Users\Student\git\c-module-1-capstone-team-8\19_Capstone\vendingmachine.csv"))
             {
                 try
