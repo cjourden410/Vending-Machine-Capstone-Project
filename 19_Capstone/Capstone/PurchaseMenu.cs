@@ -78,6 +78,9 @@ namespace Capstone
                         {
                             Console.Clear();
                             Console.WriteLine("Invalid Entry");
+                            Console.WriteLine("Press enter to continue");
+                            Console.ReadLine();
+                            Console.Clear();
                         }
                         else if (this.vm.ItemExists(selection) && this.vm.MoneyProvided >= this.vm.VendingMachineItems[selection].Price)
                         {

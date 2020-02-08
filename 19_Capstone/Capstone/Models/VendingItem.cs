@@ -14,7 +14,7 @@
         public string MessageWhenDelivered { get; set; }
         public string MessageWhenSoldOut { get; set; }
 
-        
+
         public VendingItem(string productName, decimal price, int itemsRemaining, string messageWhenDelivered)
         {
             
