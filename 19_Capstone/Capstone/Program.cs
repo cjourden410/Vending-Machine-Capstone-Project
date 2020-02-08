@@ -8,7 +8,12 @@ namespace Capstone
         static void Main(string[] args)
         {
             //TODO Add ASCII Later
-            Console.WriteLine("Vendo-Matic 800");
+            Console.Write(@"
+             \       /***** |\   |* *   * *  |\        /|    /|******* |    ||||| 
+              \     / *     | \  |   * *   * | \      / |   / |   |    |  |||| 
+               \   /  ***** |  \ |    *     *|  \    /  |  /--|   |    | |||  
+                \ /   *     |   \|    *     *|   \  /   | /   |   |    |  |||
+                 /    ***** |    \ * * ***** |    \/    |/    |   |    |   ||||||");
 
             MainMenu menu = new MainMenu();
             menu.Run();

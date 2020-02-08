@@ -10,17 +10,18 @@ namespace Capstone
         {
             VendingMachine vm = new VendingMachine();
 
-            while(true)
+            
+            while (true)
             {
                 
                     Console.Write(@"
                 Welcome, Hungry One. Please select an option.
 
-                (1) Display Vending Machine Items
-                (2) Purchase
-                (3) Exit
+                (1) Display Vending Item Selection
+                (2) Purchase Item
+                (3) Exit Vendomatic 800
                 
-                Please choose an option: ");
+                Enter your option here: ");
                 
 
                 string input = Console.ReadLine().Trim();

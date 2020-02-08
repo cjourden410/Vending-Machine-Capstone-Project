@@ -12,7 +12,9 @@ namespace Capstone
         private FileLog fileLog = new FileLog();
         VendingItemManager ItemManager = new VendingItemManager();
         public string MessageToUser;
+     
         public string NotEnoughMoney = "Sorry, please insert more money into the machine to complete the transaction. ";
+        public string InvalidItem = "Invalid Item Selected. Please try again. ";
 
 
         public VendingMachine()

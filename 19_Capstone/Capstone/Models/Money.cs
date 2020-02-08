@@ -143,7 +143,7 @@ namespace Capstone
                 }
             }
 
-            string result = $"Your change is ";
+            string result = $"Change dispensed: ";
 
             if (quarters > 0 && dimes > 0 && nickels > 0)
             {

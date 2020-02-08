@@ -16,25 +16,24 @@ namespace Capstone
             while (true)
             {
                 //Purchase Process Flow
+
+                Console.WriteLine($"{"Current Amount Tendered: ",40} {this.vm.MoneyProvided.ToString("C")}");
+
                 Console.Write(@"
-                (1) Feed Money
-                (2) Select Product
-                (3) Finish Transaction
+                (1) Feed Me Money, Please
+                (2) Select Item
+                (3) Finish Transaction 
 
-                Please choose an option: ");
-                Console.WriteLine();
-                Console.WriteLine();
-                
-                Console.WriteLine($"{"Current Money Provided: ", 40} {this.vm.MoneyProvided.ToString("C")}");
-
-                
+                Enter your choice here: ");
 
                 string input = Console.ReadLine().Trim();
                 
                 if (input == "1")
                 {
                     Console.Clear();
-                    Console.WriteLine("How much would you like to input?");
+                    Console.WriteLine("How much would you like to feed me?");
+                    Console.WriteLine("Choose from one of the options below: ");
+
                     while (true)
                     {
                         Console.WriteLine("$1, $2, $5, $10 ");
@@ -47,7 +46,7 @@ namespace Capstone
                         else if (this.vm.money.AddMoney(amountSelected))
                         {
                             Console.Clear();
-                            Console.WriteLine($"Current Money Provided: {this.vm.MoneyProvided.ToString("C")}");
+                            Console.WriteLine($"Current Amount Tendered: {this.vm.MoneyProvided.ToString("C")}. Thank you!");
                             Console.WriteLine("Press enter to continue");
                             Console.ReadLine();
                             Console.Clear();
@@ -68,7 +67,7 @@ namespace Capstone
                         if (this.vm.ItemExists(selection) && this.vm.GetItem(selection))
 
                         {
-                            Console.WriteLine($"Please enjoy your {this.vm.VendingMachineItems[selection].ProductName}! You paid {this.vm.VendingMachineItems[selection].Price.ToString("C")} and have {this.vm.MoneyProvided.ToString("C")} remaining. {this.vm.VendingMachineItems[selection].MessageWhenDelivered}");
+                            Console.WriteLine($"Enjoy your {this.vm.VendingMachineItems[selection].ProductName}! You paid {this.vm.VendingMachineItems[selection].Price.ToString("C")} and have {this.vm.MoneyProvided.ToString("C")} remaining. {this.vm.VendingMachineItems[selection].MessageWhenDelivered}");
                             Console.WriteLine("Press enter to continue");
                             Console.ReadLine();
                             Console.Clear();
@@ -77,7 +76,7 @@ namespace Capstone
                         else if (!this.vm.ItemExists(selection))
                         {
                             Console.Clear();
-                            Console.WriteLine("Invalid Entry");
+                            Console.WriteLine(this.vm.InvalidItem);
                             Console.WriteLine("Press enter to continue");
                             Console.ReadLine();
                             Console.Clear();

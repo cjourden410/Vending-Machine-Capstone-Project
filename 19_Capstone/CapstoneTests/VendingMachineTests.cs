@@ -6,12 +6,12 @@ namespace CapstoneTests
     [TestClass]
     public class VendingMachineTests
     {
-            [DataTestMethod]
-            [DataRow("1", 1)]
-            [DataRow("2", 2)]
-            [DataRow("5", 5)]
-            [DataRow("10", 10)]
-            public void TestIfDepositingCashWorks(string input, int expected) //amount inserted
+        [DataTestMethod]
+        [DataRow("1", 1)]
+        [DataRow("2", 2)]
+        [DataRow("5", 5)]
+        [DataRow("10", 10)]
+        public void TestIfDepositingCashWorks(string input, int expected) //amount inserted
         {
             // Assign
             VendingMachine vm = new VendingMachine();
@@ -24,11 +24,11 @@ namespace CapstoneTests
             Assert.AreEqual(expected, result);
         }
         [DataTestMethod]
-        [DataRow("1.35", "Your change is 5 quarters and 1 dime")]
-        [DataRow("2", "Your change is 8 quarters")]
-        [DataRow("4.30", "Your change is 17 quarters and 1 nickel")]
-        [DataRow("2.60", "Your change is 10 quarters and 1 dime")]
-        [DataRow("3.65", "Your change is 14 quarters, 1 dime and 1 nickel")]
+        [DataRow("1.35", "Change dispensed: 5 quarters and 1 dime")]
+        [DataRow("2", "Change dispensed: 8 quarters")]
+        [DataRow("4.30", "Change dispensed: 17 quarters and 1 nickel")]
+        [DataRow("2.60", "Change dispensed: 10 quarters and 1 dime")]
+        [DataRow("3.65", "Change dispensed: 14 quarters, 1 dime and 1 nickel")]
         public void TestIfChangeGivenCorrectly(string input, string expected) //change given is correct and least amount of coins possible
         {
             // Assign
@@ -71,17 +71,26 @@ namespace CapstoneTests
             // Act
             vm.GetItem("D4");
             string result = vm.NotEnoughMoney;
-            
+
 
             // Assert
             Assert.AreEqual("Sorry, please insert more money into the machine to complete the transaction. ", result);
         }
         [TestMethod]
-        //correct message give (INVALID ITEM)
-        
+        public void TestInvalidItemIfItemDoesNotExist()  //correct message give (INVALID ITEM)
+        {
+            // Assign
+            VendingMachine vm = new VendingMachine();
 
+            // Act
+            string result = vm.InvalidItem;
 
-        //correct message give (ITEM MESSAGE)
+            // Assert
+            Assert.AreEqual("Invalid Item Selected. Please try again. ", result);
+        }
+      
+      
 
     }
 }
+
