@@ -2,27 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Web;
 
 namespace Capstone
 {
     public class VendingItemManager
-    {
-
-        public List<VendingItem> VendingItemList { get; set; }
-
-
-
+    {              
         public Dictionary<string, VendingItem> GetVendingItems()
         {
             Dictionary<string, VendingItem> VendingItemList = new Dictionary<string, VendingItem>();
 
-            if (File.Exists(@"C:\Users\Student\git\c-module-1-capstone-team-8\19_Capstone\vendingmachine.csv"))
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(currentDirectory, "..\\..\\..\\..");
+            Directory.SetCurrentDirectory(filePath);
+
+            if (File.Exists("vendingmachine.csv"))
             {
+
                 try
                 {
-                    using (StreamReader sr = new StreamReader(@"C:\Users\Student\git\c-module-1-capstone-team-8\19_Capstone\vendingmachine.csv"))
+                    using (StreamReader sr = new StreamReader("vendingmachine.csv"))
                     {
                         while (!sr.EndOfStream)
                         {
