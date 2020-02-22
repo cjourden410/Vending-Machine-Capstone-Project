@@ -9,8 +9,9 @@ namespace Capstone
     {
         public void Log(string message, decimal moneyStart, decimal moneyAfter)
         {
-            string dir = @"C:\Users\Student\git\c-module-1-capstone-team-8\19_Capstone"; // TODO: Potentially remove later 
-            Directory.SetCurrentDirectory(dir); // TODO: Potentially remove later
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(currentDirectory, "..\\..\\..\\..");
+            Directory.SetCurrentDirectory(filePath);
             DateTime date = DateTime.Now;
             string calendarDate = date.ToString("MM/dd/yyyy hh:mm:ss tt");
 
